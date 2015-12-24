@@ -29,8 +29,9 @@ sed 's/DATABASE/'"$DB_NAME"'/g' WEB-INF/classes/development/hibernate.cfg.tmp4 >
 sed 's/PASSWORD/'"$DB_PWD"'/g' WEB-INF/classes/development/hibernate.cfg.tmp5 > WEB-INF/classes/development/hibernate.cfg.xml
 
 # then substitute the host parameters
-sed 's/localhost/'"$MAMUTE_HOST"'/g' WEB-INF/classes/mamute.properties > WEB-INF/classes/mamute.properties.tmp
-sed 's/8080/'"$MAMUTE_PORT"'/g' WEB-INF/classes/mamute.properties.tmp > WEB-INF/classes/mamute.properties
+sed 's/localhost/'"$MAMUTE_HOST"'/g' WEB-INF/classes/mamute.properties > WEB-INF/classes/mamute.properties.tmp1
+sed 's/8080/'"$MAMUTE_PORT"'/g' WEB-INF/classes/mamute.properties.tmp1 > WEB-INF/classes/mamute.properties.tmp
 
 echo "Now starting Mamute"
 /opt/mamute/run.sh
+
