@@ -38,3 +38,4 @@ sed 's/8080/'"$MAMUTE_PORT"'/g' WEB-INF/classes/mamute.properties.tmp1 > WEB-INF
 
 echo "Now starting Mamute"
 /opt/mamute/run.sh
+
