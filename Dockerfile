@@ -4,14 +4,16 @@ MAINTAINER Jef Verelst, https://github.com/kullervo16
 
 RUN yum install -y unzip java-1.7.0-openjdk java-1.7.0-openjdk-devel && yum clean all
 
-ADD mamute-1.3.0.war /opt/mamute/
+ADD mamute/target/mamute-1.4.0.war /opt/mamute/
 WORKDIR /opt/mamute
-RUN unzip /opt/mamute/mamute-1.3.0.war
+RUN unzip /opt/mamute/mamute-1.4.0.war
 ADD startup.sh /opt/mamute/
 RUN chmod +x /opt/mamute/*.sh
-ADD hibernate.cfg.xml /opt/mamute/WEB-INF/classes/development/hibernate.cfg.tmp
+ADD hibernate.cfg.xml /opt/mamute/WEB-INF/classes/production/hibernate.cfg.tmp
+ADD environment.properties /opt/mamute/WEB-INF/classes/environment.properties
+ADD mamute.properties /opt/mamute/WEB-INF/classes/mamute.properties
 
-EXPOSE 8080
+EXPOSE 80
 ENTRYPOINT ["/opt/mamute/startup.sh"]
 
 # variables to specify at startup
@@ -20,5 +22,6 @@ ENV DB_PORT 3306
 #ENV DB_USER the user to connect to the DB
 #ENV DB_PWD  the password
 #ENV DB_NAME the database name
-ENV MAMUTE_HOST localhost # change this when you want to expose it on a public hostname
-ENV MAMUTE_PORT 8080
+ENV MAMUTE_HOST shomabegoo.com
+ENV MAMUTE_PORT 80
+ENV VRAPTOR_ENV production
